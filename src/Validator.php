@@ -8,21 +8,25 @@ use Generator;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Contracts\Driver;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Enums\CurrencyEnum;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\AddressValidationException;
-use function app;
-use function config;
 
-readonly class Validator implements Contracts\Validator
+class Validator implements Contracts\Validator
 {
+    private const CONFIG_PATH = __DIR__ . '/../config/address_validation.php';
+
+    /**
+     * @param DriverConfig[] $options
+     */
     public function __construct(
-        private string $chain,
-        private array  $options,
-        private bool   $isMainnet = true
+        private readonly string $chain,
+        private readonly bool $isMainnet = true,
+        private ?array $options = null,
     ) {
+        $this->options = $options ?? $this->resolveConfigForCurrency(CurrencyEnum::from($this->chain));
     }
 
-    public static function make(CurrencyEnum $currency): Validator
+    public static function make(CurrencyEnum $currency, bool $isMainnet = true, ?array $config = null): self
     {
-        return new Validator($currency->value, config("address_validation.{$currency->value}"), app()->isProduction());
+        return new self($currency->value, $isMainnet, $config);
     }
 
     public function isValid(?string $address): bool
@@ -32,6 +36,7 @@ readonly class Validator implements Contracts\Validator
         }
 
         $drivers = $this->getDrivers();
+
         // if there is no drivers we force address to be valid
         if (null === $drivers || !$drivers->valid()) {
             return true;
@@ -47,6 +52,7 @@ readonly class Validator implements Contracts\Validator
         }
 
         $drivers = $this->getDrivers();
+
         // if there is no drivers we force address to be valid
         if (null === $drivers || !$drivers->valid()) {
             return;
@@ -68,7 +74,6 @@ readonly class Validator implements Contracts\Validator
      */
     protected function getDrivers(): ?Generator
     {
-        /** @var DriverConfig $driverConfig */
         foreach ($this->options as $driverConfig) {
             if ($driver = $driverConfig->makeDriver($this->isMainnet)) {
                 yield $driver;
@@ -78,9 +83,11 @@ readonly class Validator implements Contracts\Validator
         return null;
     }
 
+    /**
+     * @param Driver[] $drivers
+     */
     protected function getDriver(iterable $drivers, string $address): ?Driver
     {
-        /** @var Driver $driver */
         foreach ($drivers as $driver) {
             if ($driver->match($address)) {
                 return $driver;
@@ -88,5 +95,16 @@ readonly class Validator implements Contracts\Validator
         }
 
         return null;
+    }
+
+    /**
+     * @return DriverConfig[]
+     */
+    protected function resolveConfigForCurrency(CurrencyEnum $currency): array
+    {
+        /** @var array<string, DriverConfig[]> $config */
+        $config = require self::CONFIG_PATH;
+
+        return $config[$currency->value];
     }
 }

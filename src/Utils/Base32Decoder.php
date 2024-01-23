@@ -15,12 +15,10 @@ use function gmp_div;
 use function gmp_init;
 use function gmp_mul;
 use function gmp_pow;
-use function gmp_strval;
 use function gmp_xor;
 use function ord;
 use function pack;
 use function strlen;
-use function strtolower;
 use function unpack;
 
 class Base32Decoder

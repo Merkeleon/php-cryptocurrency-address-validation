@@ -7,13 +7,10 @@ namespace Merkeleon\PhpCryptocurrencyAddressValidation;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Drivers\AbstractDriver;
 use function class_exists;
 
-/**
- * @template T
- */
-readonly class DriverConfig
+final readonly class DriverConfig
 {
     /**
-     * @param class-string<T> $driver
+     * @param class-string<AbstractDriver> $driver
      * @param array $mainnet
      * @param array $testnet
      */
@@ -21,8 +18,7 @@ readonly class DriverConfig
         private string $driver,
         private array $mainnet = [],
         private array $testnet = []
-    )
-    {
+    ) {
     }
 
     public function makeDriver(bool $isMainNet): ?AbstractDriver
@@ -44,14 +40,5 @@ readonly class DriverConfig
         return $this->testnet
             ?: $this->mainnet
                 ?: [];
-    }
-
-    public static function __set_state(array $state): DriverConfig
-    {
-        return new self(
-            $state['driver'],
-            $state['mainnet'],
-            $state['testnet']
-        );
     }
 }

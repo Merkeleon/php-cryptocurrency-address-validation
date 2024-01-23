@@ -25,11 +25,7 @@ class ValidatorTest extends TestCase
      */
     public function test_currency_validator(CurrencyEnum $currency, string $net, bool $expected, string $address): void
     {
-        $config = require __DIR__ . '/../config/address_validation.php';
-
-        $options = $config[$currency->value];
-
-        $validator = new Validator($currency->value, $options, $net === 'mainnet');
+        $validator = new Validator($currency->value, $net === 'mainnet');
 
         $this->assertEquals(
             $expected,

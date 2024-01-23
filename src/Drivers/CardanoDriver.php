@@ -8,12 +8,10 @@ use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\Bech32Exception;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Bech32Decoder;
 use function array_keys;
 use function implode;
-use function in_array;
 use function preg_match;
 
 class CardanoDriver extends AbstractDriver
 {
-
     public function match(string $address): bool
     {
         $prefix =  implode('|', array_keys($this->options));

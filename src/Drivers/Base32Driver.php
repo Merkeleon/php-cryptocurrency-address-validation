@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
 
-use Illuminate\Support\Str;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Base32Decoder;
 use RuntimeException;
 use Throwable;
@@ -15,8 +14,8 @@ use function array_slice;
 use function implode;
 use function pack;
 use function preg_match;
-use function sprintf;
 use function str_contains;
+use function sprintf;
 use function strtolower;
 
 class Base32Driver extends AbstractDriver
@@ -45,7 +44,14 @@ class Base32Driver extends AbstractDriver
     public function check(string $address, array $networks = []): bool
     {
         try {
-            $hasPrefix = Str::contains($address, array_keys($this->options));
+            $hasPrefix = false;
+
+            foreach (array_keys($this->options) as $key) {
+                if (str_contains($address, (string) $key)) {
+                    $hasPrefix = true;
+                    break;
+                }
+            }
 
             $address = strtolower($address);
 

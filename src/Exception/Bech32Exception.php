@@ -2,7 +2,9 @@
 
 namespace Merkeleon\PhpCryptocurrencyAddressValidation\Exception;
 
-class Bech32Exception extends \Exception
+use Exception;
+
+class Bech32Exception extends Exception
 {
 
 }

@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
 
-use InvalidArgumentException;
 use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\KeccakDecoder;
 use function intval;
-use function is_string;
 use function preg_match;
 use function str_replace;
 use function str_split;
 use function str_starts_with;
-use function strpos;
 use function strtolower;
 use function strtoupper;
 use function substr;
