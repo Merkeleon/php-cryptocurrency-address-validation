@@ -53,7 +53,7 @@ class Base58Decoder
         while (bccomp($hex, "0") === 1)
         {
             $dv     = bcdiv($hex, "58", 0);
-            $rem    = (integer)bcmod($hex, "58");
+            $rem    = (int) bcmod($hex, "58");
             $hex    = $dv;
             $return .= $alphabet[$rem];
         }
