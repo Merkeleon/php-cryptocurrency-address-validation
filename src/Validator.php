@@ -22,7 +22,8 @@ readonly class Validator implements Contracts\Validator
 
     public static function make(CurrencyEnum $currency): Validator
     {
-        return new Validator($currency->value, config("address_validation.{$currency->value}"), app()->isProduction());
+        $isMAinNet  = app()->isProduction() || app()->environment('demo');
+        return new Validator($currency->value, config("address_validation.$currency->value"), $isMAinNet);
     }
 
     public function isValid(?string $address): bool

@@ -37,6 +37,16 @@ return [
             ['bc' => null],
             ['tb' => null, 'bcrt' => null]
         ),
+        new DriverConfig(
+            Drivers\Base32Driver::class,
+            ['bitcoincash:' => null],
+            ['bchtest:' => null, 'bchreg:' => null,]
+        ),
+        new DriverConfig(
+            Drivers\DefaultBase58Driver::class,
+            ['1' => '00', '3' => '05'],
+            ['2' => 'C4', 'm' => '6F']
+        ),
     ],
     CurrencyEnum::CARDANO->value => [
         new DriverConfig(
@@ -104,5 +114,39 @@ return [
             Drivers\DefaultBase58Driver::class,
             ['t' => '1C'],
         ),
+    ],
+    CurrencyEnum::TON->value => [
+        new DriverConfig(
+            Drivers\Base64Crc16Driver::class,
+            ['T' => '41'],
+        ),
+    ],
+
+    CurrencyEnum::ARBITRUM->value => [
+        new DriverConfig(Drivers\KeccakStrictDriver::class),
+    ],
+
+    CurrencyEnum::BASE->value => [
+        new DriverConfig(Drivers\KeccakStrictDriver::class),
+    ],
+
+    CurrencyEnum::OPTIMISM->value => [
+        new DriverConfig(Drivers\KeccakStrictDriver::class),
+    ],
+
+    CurrencyEnum::POLYGON->value => [
+        new DriverConfig(Drivers\KeccakStrictDriver::class),
+    ],
+
+    CurrencyEnum::BNB->value => [
+        new DriverConfig(Drivers\KeccakStrictDriver::class),
+    ],
+
+    CurrencyEnum::SOLANA->value => [
+        new DriverConfig(Drivers\SolanaDriver::class),
+    ],
+
+    CurrencyEnum::SUI->value => [
+        new DriverConfig(Drivers\SuiDriver::class),
     ],
 ];

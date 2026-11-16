@@ -18,4 +18,12 @@ enum CurrencyEnum: string
     case RIPPLE = 'ripple';
     case TRON = 'tron';
     case ZCASH = 'zcash';
+    case TON = 'ton';
+    case ARBITRUM = 'arbitrum';
+    case POLYGON = 'polygon';
+    case BASE = 'base';
+    case OPTIMISM = 'optimism';
+    case BNB = 'bnb';
+    case SOLANA = 'solana';
+    case SUI = 'sui';
 }

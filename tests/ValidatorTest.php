@@ -118,6 +118,34 @@ class ValidatorTest extends TestCase
             //
             'EOS #1' => [CurrencyEnum::EOS, 'mainnet', true, 'atticlabeosb'],
             'EOS #2' => [CurrencyEnum::EOS, 'mainnet', true, 'bitfinexeos1'],
+            //
+            'Solana #1' => [CurrencyEnum::SOLANA, 'mainnet', true, '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM'],
+            'Solana #2' => [CurrencyEnum::SOLANA, 'mainnet', true, 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'],
+            'Solana #3' => [CurrencyEnum::SOLANA, 'mainnet', true, 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'],
+            'Solana #4' => [CurrencyEnum::SOLANA, 'mainnet', true, '11111111111111111111111111111111'],
+            'Solana #5' => [CurrencyEnum::SOLANA, 'mainnet', true, 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'],
+            'Solana #6' => [CurrencyEnum::SOLANA, 'mainnet', false, '9WzDXwBbmkg'],
+            'Solana #7' => [CurrencyEnum::SOLANA, 'mainnet', false, '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWMXXXXXX'],
+            'Solana #8' => [CurrencyEnum::SOLANA, 'mainnet', false, '0WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM'],
+            'Solana #9' => [CurrencyEnum::SOLANA, 'mainnet', false, 'OWzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM'],
+            //
+            'Sui #1' => [CurrencyEnum::SUI, 'mainnet', true, '0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f'],
+            'Sui #2' => [CurrencyEnum::SUI, 'mainnet', true, '0xf702ee06caf41f6df830b6cbbebab0c1599ef35dee8bca835aac6b4d52a6991e'],
+            'Sui #3' => [CurrencyEnum::SUI, 'mainnet', true, '0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7'],
+            'Sui #4' => [CurrencyEnum::SUI, 'mainnet', true, '0x0000000000000000000000000000000000000000000000000000000000000002'],
+            'Sui #5' => [CurrencyEnum::SUI, 'mainnet', false, '0xF702EE06CAF41F6DF830B6CBBEBAB0C1599EF35DEE8BCA835AAC6B4D52A6991E'],
+            'Sui #6' => [CurrencyEnum::SUI, 'testnet', true, '0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f'],
+            'Sui #7' => [CurrencyEnum::SUI, 'mainnet', false, '0x2'],
+            'Sui #8' => [CurrencyEnum::SUI, 'mainnet', false, '059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f'],
+            'Sui #9' => [CurrencyEnum::SUI, 'mainnet', false, '0X059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f'],
+            'Sui #10' => [CurrencyEnum::SUI, 'mainnet', false, '0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94'],
+            'Sui #11' => [CurrencyEnum::SUI, 'mainnet', false, '0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f0'],
+            'Sui #12' => [CurrencyEnum::SUI, 'mainnet', false, '0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94g'],
+            'Sui #13' => [CurrencyEnum::SUI, 'mainnet', false, '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'],
+            'Sui #14' => [CurrencyEnum::SUI, 'mainnet', false, '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM'],
+            'Sui #15' => [CurrencyEnum::SUI, 'mainnet', false, ' 0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f'],
+            'Sui #16' => [CurrencyEnum::SUI, 'mainnet', false, "0x059e21c19f9a8233f4fcbc11fba713c022dcf9d3632961b7ac7836a9ffa8d94f\n"],
+            'Sui #17' => [CurrencyEnum::SUI, 'mainnet', false, '0xf702ee06caf41f6df830b6cbbebab0c1599ef35dee8bca835aac6b4d52a6991E'],
         ];
     }
 }

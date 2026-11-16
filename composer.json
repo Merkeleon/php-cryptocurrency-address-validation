@@ -1,5 +1,5 @@
 {
-    "name": "merkeleon/php-cryptocurrency-address-validation",
+    "name": "kodenko/php-cryptocurrency-address-validation",
     "description": "Cryptocurrency address validation. Currently supports litecoin and bitcoin.",
     "authors": [
         {
@@ -11,13 +11,15 @@
         "php": "^8.2",
         "ext-gmp": "*",
         "ext-bcmath": "*",
-        "laravel/framework": ">=v7.0.0|>=v10.0.0",
-        "spomky-labs/cbor-php": "^3.0"
+        "laravel/framework": ">=v7.0.0|>=v11.0.2||>=v12.0.2",
+        "spomky-labs/cbor-php": "^3.1"
     },
     "scripts": {
         "test": "@php vendor/bin/phpunit"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest"
+        ,
         "phpunit/phpunit": "~8.0"
     },
     "autoload": {
