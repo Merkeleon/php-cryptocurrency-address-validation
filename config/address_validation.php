@@ -145,4 +145,8 @@ return [
     CurrencyEnum::SOLANA->value => [
         new DriverConfig(Drivers\SolanaDriver::class),
     ],
+
+    CurrencyEnum::SUI->value => [
+        new DriverConfig(Drivers\SuiDriver::class),
+    ],
 ];

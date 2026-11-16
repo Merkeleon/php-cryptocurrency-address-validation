@@ -25,4 +25,5 @@ enum CurrencyEnum: string
     case OPTIMISM = 'optimism';
     case BNB = 'bnb';
     case SOLANA = 'solana';
+    case SUI = 'sui';
 }
